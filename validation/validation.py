@@ -7,7 +7,7 @@ from validation.isBirthdayValid import isBirthdayValid
 #function: validate inputs for users
 def isValid(values):
     name = values["-NAME-"]
-    age = values["-AGE-"]
+    age = values["-SALARY-"]
     birthday = values["-BIRTHDAY-"]
     
     nameErrorFlag, nameErrorMsg = isNameValid(name)
