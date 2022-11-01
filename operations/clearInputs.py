@@ -1,8 +1,7 @@
 
 import PySimpleGUI as sg
 
-def clearInputs(keys_to_clear):
-    window = sg.Window('File Reader')
-    window["-NAME-"]('')
-    window["-SALARY-"]('')
-    window["-BIRTHDAY-"]('')
+#clears the inputs of the given keys
+def clearInputs(window, keysToClear):
+    for key in keysToClear:
+        window[key].update('')

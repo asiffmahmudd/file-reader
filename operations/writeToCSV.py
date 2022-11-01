@@ -31,7 +31,6 @@ def writeToCSV(data):
         # the writerow()
         writer_object.writerow(data)
         sg.popup("User added!")
-        clearInputs(header[1:])
         # Close the file object
         f_object.close()
     
