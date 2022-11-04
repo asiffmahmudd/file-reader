@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-
 from layout.createLayout import createLayout
 from operations.clearInputs import clearInputs
 from operations.writeToCSV import writeToCSV
@@ -18,7 +17,6 @@ def processData(values, window):
         data["birthday"] = values["-BIRTHDAY-"]
         writeToCSV(data)
         clearInputs(window, list(values.keys())[:len(data.keys())-1])
-    
 
 #function: main function. the app starts here
 if __name__ == "__main__":    
