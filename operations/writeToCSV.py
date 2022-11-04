@@ -2,10 +2,7 @@ import os
 import PySimpleGUI as sg
 from csv import DictWriter
 
-from operations.clearInputs import clearInputs
-
 # from macpath import dirname
-
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
 
 #function for writing data into a csv file
