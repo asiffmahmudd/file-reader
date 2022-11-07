@@ -11,14 +11,29 @@ def buttonM():
                 'Add', 
                 size=(8,1),
                 font=btn_style["font"],
-                key='-ACTION_BTN-',
+                key='-ADD_BTN-',
+                enable_events=True
+            ), 
+            sg.Button(
+                'Update', 
+                size=(8,1),
+                font=btn_style["font"],
+                key='-UPDATE_BTN-',
+                enable_events=True
+            ), 
+            sg.Button(
+                'Delete', 
+                size=(8,1),
+                font=btn_style["font"],
+                key='-DELETE_BTN-',
                 enable_events=True
             ), 
             sg.Button(
                 'Cancel', 
                 pad=(10,5), 
                 size=(8,1),
-                font=btn_style["font"]
+                font=btn_style["font"],
+                visible=True
             )
         ]
     ]

@@ -1,7 +1,10 @@
 
-import PySimpleGUI as sg
+import globalStore.globals as globals
 
 #clears the inputs of the given keys
-def clearInputs(window, keysToClear):
-    for key in keysToClear:
-        window[key].update('')
+def clearInputs():#keysToClear):
+    globals.window['-NAME-'].update('')
+    globals.window['-SALARY-'].update('')
+    globals.window['-BIRTHDAY-'].update('')
+    # for key in keysToClear:
+    #     globals.window[key].update('')

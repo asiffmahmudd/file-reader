@@ -1,26 +1,23 @@
 import PySimpleGUI as sg
 
-from layout.tabs.createTab.createTab import createTab
-from layout.tabs.deleteTab.deleteTab import deleteTab
-from layout.tabs.editTab.editTab import editTab
+from layout.tabs.usersTab.usersTab import usersTab
+from layout.tabs.dataTab.dataTab import dataTab
 from styles.defaultStyles import default_text_style
 
 def tabsGroup():
     
-    create_tab = createTab()
-    edit_tab = editTab()
-    delete_tab = deleteTab()
+    create_tab = usersTab()
+    data_tab = dataTab()
     
     text_style = default_text_style()
 
     return sg.TabGroup(
         [
             [
-                sg.Tab('Create User', create_tab, key="-CREATE_TAB-"), 
-                sg.Tab('Edit User', edit_tab, key="-EDIT_TAB-"), 
-                sg.Tab('Delete User', delete_tab, key="-DELETE_TAB-")
+                sg.Tab('Users', create_tab, key="-USERS_TAB-"), 
+                sg.Tab('Data', data_tab, key="-DATA_TAB-"), 
             ]
         ],
         font=text_style["font"],
-        enable_events=True
+        enable_events=True,
     )

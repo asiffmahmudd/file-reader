@@ -1,14 +1,20 @@
 import PySimpleGUI as sg
+from operations.readFromJSON import readData
 from styles.defaultStyles import default_text_style
 from styles.defaultStyles import default_input_style
 
-#function: Create tab layout for adding users
-def createTab():
-
+#function: Edit tab layout for editing users
+def usersTab():
     text_style = default_text_style()
     input_style = default_input_style()
 
-    return [  
+    data = readData()
+    data_headings = []
+    if len(data) > 0:
+        data_headings = list(data[0].keys())
+        data = processEditData(data)
+
+    return [
         #row - 1
         [
             sg.Text(
@@ -62,7 +68,31 @@ def createTab():
                 font=("Arial", 15)
             )
         ],
-        
+
         #row - 4
-        
+        [
+            sg.Table(
+                values=data, 
+                headings=data_headings,
+                # max_col_width=65,
+                auto_size_columns=False,
+                display_row_numbers=True,
+                # col_widths=data_cols_width,
+                justification='left',
+                enable_events=True,
+                font=text_style['font'],
+                size=text_style['size'],
+                num_rows=6, 
+                key='-INFO_TABLE-'
+            )
+        ]
     ]
+    
+def processEditData(data): 
+    temp = []
+    for row in data:
+        rowData = []
+        for val in row.values(): 
+            rowData.append(val)
+        temp.append(rowData)
+    return temp

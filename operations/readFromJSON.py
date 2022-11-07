@@ -1,6 +1,6 @@
 import json
 import os
-  
+import globalStore.globals as info
 
 def readData():
     try:
@@ -10,11 +10,11 @@ def readData():
         
         # returns JSON object as 
         # a dictionary
-        data = json.load(f)
-
+        jsondata = json.load(f)
         # Closing file
         f.close()
 
-        return data['info']
+        info.info = jsondata['info']
+        return jsondata['info']
     except:
         return []

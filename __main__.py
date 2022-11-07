@@ -1,47 +1,46 @@
 import PySimpleGUI as sg
 from layout.createLayout import createLayout
+from operations.addData import addData
+from operations.populateInputFields import populateInputFields
+from operations.deleteData import deleteData
+from operations.updateData import updateData
 from operations.clearInputs import clearInputs
-from operations.writeToJSON import writeToJSON
-from validation.validation import isValid
+import globalStore.globals as globals
 
-lastId = 0
-
-def addData(values, window):
-    global lastId
-    if isValid(values):
-        data = {}
-        data["id"] = lastId + 1
-        lastId += 1
-        data["name"] = values["-NAME-"]
-        data["salary"] = values["-SALARY-"]
-        data["birthday"] = values["-BIRTHDAY-"]
-        writeToJSON(data)
-        clearInputs(window, list(values.keys())[:len(data.keys())-1])
-
-def handleEvents(window, event, values):
-    if event == '-ACTION_BTN-' and window[event].get_text() == 'Add':
-        addData(values, window)
-    elif event == '-ACTION_BTN-' and window[event].get_text() == 'Edit':
-        print("edit")
-    elif event == '-ACTION_BTN-' and window[event].get_text() == 'Delete':
-        print("delete")
-
-    elif values[event] == '-CREATE_TAB-':
-        window['-ACTION_BTN-'].update('Add')
-    elif values[event] == '-EDIT_TAB-':
-        window['-ACTION_BTN-'].update('Edit')
-    elif values[event] == '-DELETE_TAB-':
-        window['-ACTION_BTN-'].update('Delete')
-
-
+selectedIndex = -1
+def handleEvents(event, values):
+    global selectedIndex
+    if event == '-ADD_BTN-':
+        addData(values)
+    elif event == '-UPDATE_BTN-':
+        print(selectedIndex)
+        if selectedIndex > -1:
+            updateData(selectedIndex)
+            sg.popup("Update successful!")
+        else:
+            sg.popup("No row selected from the table")
+        clearInputs()
+        selectedIndex = -1
+    elif event == '-DELETE_BTN-':
+        if selectedIndex > -1:
+            deleteData(selectedIndex)
+        else:
+            sg.popup("No row selected from the table")
+        selectedIndex = -1
+    elif event == '-INFO_TABLE-':
+        try:
+            selectedIndex = values['-INFO_TABLE-'][0]
+            populateInputFields(globals.info[selectedIndex].values())
+        except:
+            return
 #function: main function. the app starts here
 if __name__ == "__main__":    
     layout = createLayout()
-    window = sg.Window('File Reader', layout, element_justification='c', size=(1000, 500))
+    globals.window = sg.Window('File Reader', layout, element_justification='c', size=(1000, 500))
     while True:
-        event, values = window.read()
+        event, globals.values = globals.window.read()
         if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
             break
-        handleEvents(window, event, values)
+        handleEvents(event, globals.values)
     
-    window.close()
+    globals.window.close()
