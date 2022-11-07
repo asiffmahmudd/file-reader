@@ -1,1 +1,22 @@
-{"id": 1, "name": "asd", "salary": "234", "birthday": "2022-11-03"}
+{
+    "info": [
+        {
+            "id": 1,
+            "name": "asd",
+            "salary": "234",
+            "birthday": "2022-11-01"
+        },
+        {
+            "id": 1,
+            "name": "ytur",
+            "salary": "345",
+            "birthday": "2022-11-02"
+        },
+        {
+            "id": 2,
+            "name": "gjdf",
+            "salary": "5468",
+            "birthday": "2022-11-04"
+        }
+    ]
+}

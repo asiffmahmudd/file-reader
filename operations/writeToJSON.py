@@ -17,13 +17,17 @@ def writeToJSON(data):
 
     with open(filePath, mode) as json_file:
         if mode == 'w':
+            data = {
+                "info" : [
+                    data
+                ]
+            }
             json.dump(data, json_file)
         else:
              # First we load existing data into a dict.
             file_data = json.load(json_file)
-            print(file_data)
             # Join new_data with file_data inside emp_details
-            file_data.append(data) # Sets file's current position at offset.
+            file_data["info"].append(data) # Sets file's current position at offset.
             json_file.seek(0)  # convert back to json.
             json.dump(file_data, json_file, indent = 4)
         sg.popup("User added!")
