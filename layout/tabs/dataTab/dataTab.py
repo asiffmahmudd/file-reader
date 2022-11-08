@@ -18,10 +18,11 @@ def dataTab():
             sg.Table(
                 values=data, 
                 headings=data_headings,
-                # max_col_width=65,
+                max_col_width=100,
                 auto_size_columns=False,
                 display_row_numbers=True,
-                # col_widths=data_cols_width,
+                vertical_scroll_only=False,
+                def_col_width=20,
                 justification='left',
                 enable_events=True,
                 font=text_style['font'],

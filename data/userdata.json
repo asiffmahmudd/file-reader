@@ -6,21 +6,6 @@
             "birthday": "2022-11-02"
         },
         {
-            "name": "lek",
-            "salary": "567",
-            "birthday": "2022-11-03"
-        },
-        {
-            "name": "rty",
-            "salary": "456",
-            "birthday": "2022-11-03"
-        },
-        {
-            "name": "fdgs",
-            "salary": "345",
-            "birthday": "2022-11-02"
-        },
-        {
             "name": "fdg",
             "salary": "456",
             "birthday": "2022-11-01"
@@ -101,11 +86,6 @@
             "birthday": "2022-11-03"
         },
         {
-            "name": "hrr",
-            "salary": "657",
-            "birthday": "2022-11-01"
-        },
-        {
             "name": "ter",
             "salary": "456",
             "birthday": "2022-11-03"
@@ -151,9 +131,14 @@
             "birthday": "2022-11-01"
         },
         {
-            "name": "fghj",
-            "salary": "5674",
-            "birthday": "2022-11-05"
+            "name": "efwef",
+            "salary": "324",
+            "birthday": "2022-11-03"
+        },
+        {
+            "name": "rty",
+            "salary": "456",
+            "birthday": "2022-11-03"
         }
     ]
 }

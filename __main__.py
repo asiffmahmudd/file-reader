@@ -13,17 +13,18 @@ def handleEvents(event, values):
     if event == '-ADD_BTN-':
         addData(values)
     elif event == '-UPDATE_BTN-':
-        print(selectedIndex)
         if selectedIndex > -1:
-            updateData(selectedIndex)
-            sg.popup("Update successful!")
+            isUpdated = updateData(selectedIndex)
+            if isUpdated:
+                sg.popup("Update successful!")
+                selectedIndex = -1
         else:
             sg.popup("No row selected from the table")
-        clearInputs()
-        selectedIndex = -1
     elif event == '-DELETE_BTN-':
         if selectedIndex > -1:
             deleteData(selectedIndex)
+            clearInputs()
+            sg.popup("Deleted successfully!")
         else:
             sg.popup("No row selected from the table")
         selectedIndex = -1
@@ -33,10 +34,12 @@ def handleEvents(event, values):
             populateInputFields(globals.info[selectedIndex].values())
         except:
             return
+
+
 #function: main function. the app starts here
 if __name__ == "__main__":    
     layout = createLayout()
-    globals.window = sg.Window('File Reader', layout, element_justification='c', size=(1000, 500))
+    globals.window = sg.Window('File Reader', layout, element_justification='c', size=(1100, 550))
     while True:
         event, globals.values = globals.window.read()
         if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
